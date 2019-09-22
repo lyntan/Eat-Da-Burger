@@ -1,0 +1,48 @@
+<h1>Ready To Consume</h1>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                {{#each burgers}}
+                {{#unless devoured}}
+                <div>
+                    <form action="api/burgers/update/{{id}}" method="POST">
+                        <button type="submit" class='consume'> {{this.burger_name}}</button>
+                    </form>
+                </div>
+                {{/unless}}
+                {{/each}}
+            </div>
+
+<h1>Consumed</h1>
+
+            <div class="col s6">
+                {{#each burgers}}
+                {{#if this.devoured}}
+                <div>
+                    <div>
+                        {{this.burger_name}}
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</main>
+
+<center>
+
+<h2>Add A Burger</h2>
+
+<div class="row">
+    <div class="col s12">
+        <form action="/api/burgers/create" method="POST">
+            <input type="text" id="name" name="burger_name" placeholder="Yum">
+            <button type="submit" class="addBurger">Add</button>
+        </form>
+    </div>
+</div>
+
+</center>
